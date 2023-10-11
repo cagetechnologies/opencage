@@ -1,0 +1,9 @@
+<a [routerLink]="'/collections/' + collection.id + '/sets/' + set.id + '/items/' + item.id" (click)="closeSidebarI()">{{ item.title }}</a>
+<a *ngIf="item.path" class="webPageExternalLink ml-1" [href]="item.path" target="_blank" (click)="closeSidebarI()"><fa-icon [icon]="faExternalLinkAlt"></fa-icon></a>
+<div *ngIf="item.items && item.items.length > 0 && open">
+    <ul>
+        <li *ngFor="let subItem of item.items">
+            <app-item [item]="subItem"></app-item>
+        </li>
+    </ul>
+</div>

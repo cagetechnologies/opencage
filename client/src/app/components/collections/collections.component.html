@@ -1,0 +1,22 @@
+<p-dialog header="Add Collection" [(visible)]="addingCollection">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="url">Name</label>
+            <input id="url" type="text" pInputText [(ngModel)]="name">
+        </div>
+    </div>
+    <p-button label="Add" (click)="addCollectionDone()"></p-button>
+</p-dialog>
+<div class="content">
+    <p-button label="Add Collection" (click)="addCollection()"></p-button>
+    <h2>Collections</h2>
+    <ul class="collections" *ngIf="collections && collections.length > 0">
+        <li *ngFor="let collection of collections">
+            <app-collection [collection]="collection" (deleteCollection)="deleteCollection($event)"></app-collection>
+        </li>
+    </ul>
+    <div *ngIf="!collections || collections.length == 0">
+        No Collections Yet - You can add a collection including one or more documents and web pages.
+    </div>
+</div>
+

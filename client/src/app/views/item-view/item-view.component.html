@@ -1,0 +1,44 @@
+<div class="content">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+    <!--button pButton pRipple type="button" label="Back to Set" (click)="back()"></button-->
+    <div style="display: flex; align-items: center; width: 100%">
+        <h3>{{ item.title }}</h3>
+        <button pButton pRipple type="button" label="Process Item" class="p-button" (click)="processItem()" style="margin-left: auto"></button>
+        <button pButton pRipple type="button" label="Delete Item" class="p-button-danger" (click)="deleteItem()" style="margin-left: 5px"></button>
+    </div>
+    <p-tabView>
+        <p-tabPanel header="Content">
+            <p>{{ item.text }}</p>
+        </p-tabPanel>
+        <p-tabPanel header="Content Editor">
+            <app-content-editor [item]="item"></app-content-editor>
+        </p-tabPanel>
+        <p-tabPanel header="Node Editor">
+            <app-node-editor [item]="item"></app-node-editor>
+        </p-tabPanel>
+        <p-tabPanel *ngIf="item.processed" header="Processed">
+            <p>{{ item.processed }}</p>
+        </p-tabPanel>
+        <p-tabPanel header="Sub-Items">
+            <ul *ngIf="item.items && item.items.length > 0; else subItemsEmpty">
+                <li *ngFor="let subItem of item.items">
+                    <app-item [item]="subItem" [set]="set" [collection]="collection"></app-item>
+                </li>
+            </ul>
+        </p-tabPanel>
+        <p-tabPanel header="Visualizations">
+            <button pButton pRipple type="button" label="Select Visualization" style="margin-left: auto" (onClick)="selectVisualization = !selectVisualization"></button>
+            <app-visualizations *ngIf="selectVisualization" [item]="item"></app-visualizations>
+         </p-tabPanel>
+        <p-tabPanel header="Derived Assets">
+            <div style="margin-bottom: 10px">No Derived Assets</div>
+            <button pButton pRipple type="button" label="Open Analysis" style="margin-left: auto"></button>
+        </p-tabPanel>
+        <p-tabPanel header="Related Assets">
+            <div>No Related Assets</div>
+        </p-tabPanel>
+    </p-tabView>
+</div>
+<ng-template #subItemsEmpty>
+    No Sub-Items
+</ng-template>

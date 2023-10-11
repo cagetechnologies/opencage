@@ -1,0 +1,6 @@
+<div style="margin-bottom: 15px">
+    <a [routerLink]="'/collections/' + collection.id" (click)="closeSidebar1()" class="name">{{ collection.name }}</a>
+    <ul *ngIf="collection.sets && collection.sets.length > 0" class="collection-sidebar">
+        <li *ngFor="let set of collection.sets"><app-set-sidebar [collection]="collection" [set]="set" (closeSidebar)="closeSidebar1()"></app-set-sidebar></li>
+    </ul>
+</div>

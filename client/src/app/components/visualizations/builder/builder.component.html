@@ -1,0 +1,12 @@
+<p-tabPanel header="Builder">
+<div class="drag-wrapper" 
+      *ngFor="let row of data; let index = index"
+      [draggable]="true" 
+      [class.dragging]="index === this.draggingIndex"
+      (dragstart)="onDragStart(index)"
+      (dragenter)="onDragEnter(index)" 
+      (dragend)="onDragEnd($event)">
+      <div class="card"><input *ngIf="editting == index" [(ngModel)]="text" (keyup.enter)="cancelEditting(index)" style="flex-grow: 1; border: none"><div *ngIf="editting != index" style="flex-grow: 1">{{ row }}</div><button *ngIf="editting == -1" (click)="text = row; editting = index">Edit</button><button *ngIf="editting == index" (click)="cancelEditting(index)">Done</button></div>
+</div>
+<button (click)="export()">Export</button>
+</p-tabPanel>

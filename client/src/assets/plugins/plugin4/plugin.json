@@ -1,0 +1,10 @@
+{
+    "id" : "plugin4",
+    "name":"Word Cloud Visualization",
+    "files":[
+        { 
+            "name":"test",
+            "src":"test.js"
+        }
+    ]
+}

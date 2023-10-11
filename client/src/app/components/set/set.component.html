@@ -1,0 +1,10 @@
+<div style="display: flex; align-items: center; justify-content: space-between; width: 100%">
+    <a *ngIf="!set.items || set.items.length != 1" [routerLink]="'/collections/' + collection.id + '/sets/' + set.id">{{ set.name }}</a>
+    <app-item *ngIf="set.items && set.items.length == 1" [item]="set.items[0]" [set]="set" [collection]="collection" style="flex-grow: 1; margin-right: 10px"></app-item>
+    <button *ngIf="showDelete" pButton pRipple type="button" label="Delete Set" class="p-button-danger" (click)="deleteSet()" style="margin-left: auto"></button>
+</div>
+<ul *ngIf="set.items && set.items.length > 1" class="sets">
+    <li *ngFor="let item of set.items">
+        <app-item [item]="item" [set]="set" [collection]="collection"></app-item>
+    </li>
+</ul>

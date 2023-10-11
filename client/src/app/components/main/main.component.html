@@ -1,0 +1,53 @@
+<p-toolbar class="nav">
+    <div class="p-toolbar-group-left">
+        <i class="pi pi-bars" (click)="visibleSidebar = !visibleSidebar"></i>
+        <div class="pl-2">Open Cage</div>
+        
+    </div>
+    <div class="p-toolbar-group-right">
+        <div class="pr-2"><a routerLink="/collections">Collections</a></div>
+        <div class="pr-2"><a routerLink="/knowledge">Knowledge</a></div>
+        <div class="pr-2"><a routerLink="/people">People</a></div>
+        <div class="pr-2"><a routerLink="/groups">Groups</a></div>
+        <div><a routerLink="/search"><i class="pi pi-search pr-2"></i></a></div>
+        <div><a routerLink="/settings"><i class="pi pi-cog pr-2"></i></a></div>
+        <!--p-button icon="pi pi-calendar" styleClass="p-button-success mr-2" class="mr-2"></p-button>
+        <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button-->
+        <a routerLink="/person"><p-avatar image="assets/img/avatars/amyelsner.png" styleClass="mr-2" size="large" shape="circle"></p-avatar></a>
+    </div>
+</p-toolbar>
+<div class="main">
+    <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000" class="p-component">
+        <ul style="list-style-type: none; padding-left: 0">
+            <li *ngFor="let collection of collections">
+                <app-collection-sidebar [collection]="collection" (closeSidebar)="closeSidebar()"></app-collection-sidebar>
+            </li>
+            <!--li>
+                <a routerLink="/collections" routerLinkActive="active">
+                    <div class="buttons-icon"><fa-icon [icon]="faFolder"></fa-icon></div>
+                    <div class="buttons-text">Collections</div>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/pipelines" routerLinkActive="active">
+                    <div class="buttons-icon"><fa-icon [icon]="faShoePrints"></fa-icon></div>
+                    <div class="buttons-text">Knowledge</div>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/people">People</a>
+            </li-->
+        </ul>
+    </p-sidebar>
+    <div style="flex-grow: 1">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<!--as-split unit="percent" direction="horizontal" #split="asSplit">
+    <as-split-area size="30" #area1="asSplitArea" style="background-color: black">
+        <router-outlet></router-outlet>
+    </as-split-area>
+    <as-split-area size="70" #area2="asSplitArea">
+        <app-visualizations></app-visualizations>
+    </as-split-area>
+</as-split-->

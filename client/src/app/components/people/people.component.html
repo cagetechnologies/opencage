@@ -1,0 +1,10 @@
+<div class="content">
+    <p-button label="Add Contact" (click)="addContact()"></p-button>
+    <h2>Contacts</h2>
+    <ul *ngIf="contacts && contacts.length > 0">
+        <li *ngFor="let contact of contacts">{{ contact.person.name }}</li>
+    </ul>
+    <div *ngIf="!contacts || contacts.length == 0">
+        No Contacts Yet - Add a contact by email address or ask someone to add you using your email address.
+    </div>
+</div>

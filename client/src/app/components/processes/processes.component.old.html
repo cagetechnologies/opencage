@@ -1,0 +1,58 @@
+<p-dialog header="Add Plugin" [(visible)]="addingPlugin">
+    <h5>Add Node</h5>
+    <div class="p-fluid">
+        <select [(ngModel)]="selectedPlugin">
+            <option *ngFor="let plugin of plugins" [ngValue]="plugin">{{ plugin.name }}</option>
+        </select>
+        <p-button label="Add Plugin" (click)="addSelectedPlugin()"></p-button>
+    </div>
+</p-dialog>
+<p-dialog header="Save Process" [(visible)]="savingProcessAs">
+    <h5>Save Process</h5>
+    <div class="p-fluid">
+        <input type="text" [(ngModel)]="processName">
+        <p-button label="Save" (click)="saveProcessAs()"></p-button>
+    </div>
+</p-dialog>
+<as-split unit="percent" direction="horizontal" #split="asSplit">
+    <as-split-area size="30" #area1="asSplitArea" style="background-color: black">
+        <ul class="bar">
+            <li>
+                <a (click)="addProcess()" tooltip="Add Process">
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                </a>
+            </li>
+        </ul>
+        <ul class="collections">
+            <li *ngFor="let process of processes">
+                <a (click)="openProcess(process)">
+                    {{ process.name }}
+                </a>
+            </li>
+        </ul>
+    </as-split-area>
+    <as-split-area size="70" #area2="asSplitArea">
+        <div class="page">
+            <ul class="bar">
+                <li>
+                    <a (click)="addNode()" tooltip="Add Node">
+                        <fa-icon [icon]="faPlus"></fa-icon>
+                    </a>
+                </li>
+                <li>
+                    <a (click)="saveProcess()" tooltip="Save">
+                        Save
+                    </a>
+                </li>
+                <li>
+                    <a (click)="startProcess()" tooltip="Run Process">
+                        Run
+                    </a>
+                </li>
+            </ul>
+            <div class="wrapper">
+                <canvas id="nodes"></canvas>
+            </div>
+        </div>
+    </as-split-area>
+</as-split>

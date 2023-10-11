@@ -1,0 +1,21 @@
+<div class="p-mx-2" *ngIf="user">
+    <h2>Name</h2>
+    <div>{{ user.name }}</div>
+    <h2>Created</h2>
+    <div>{{ user.created | date }}</div>
+    <h2>Hub</h2>
+    <div>Omega</div>
+    <h2>Person</h2>
+    <div>{{ user.personDetail.name }}</div>
+    <h2>Contacts</h2>
+    <table *ngIf="user.personDetail.contacts && user.personDetail.contacts.length > 0">
+        <tr *ngFor="let contact of user.personDetail.contacts"><td>{{ contact.name }}</td></tr>
+    </table>
+    <div *ngIf="!user.personDetail.contacts || user.personDetail.contacts.length == 0">None</div>
+    <h2>Groups</h2>
+    <table *ngIf="user.personDetail.groups && user.personDetail.groups.length > 0">
+        <tr *ngFor="let group of user.personDetail.groups"><td>{{ group.name }}</td></tr>
+    </table>
+    <div *ngIf="!user.personDetail.groups || user.personDetail.groups.length == 0">None</div>
+    <!--div>{{ text }}</div-->
+</div>

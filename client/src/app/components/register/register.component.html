@@ -1,0 +1,24 @@
+<div class="login-wrapper">
+    <div class="login-form">
+        <div class="login-line">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="name">
+        </div>
+        <div class="login-line">
+            <label>Email</label>
+            <input type="text" [(ngModel)]="email">
+        </div>
+        <div class="login-line">
+            <label>Password</label>
+            <input type="password" [(ngModel)]="password1">
+        </div>
+        <div class="login-line">
+            <label>Repeat Password</label>
+            <input type="password" [(ngModel)]="password2">
+        </div>
+        <div class="login-buttons">
+            <button (click)="register()">Register</button>
+        </div>
+        <div style="margin-top: 20px; text-align: center">Already registered?  <a routerLink="/login">Login</a></div>
+    </div>
+</div>

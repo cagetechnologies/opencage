@@ -1,0 +1,25 @@
+<div class="content">
+    
+    <h2>Pipelines</h2>
+    <p-button label="Add Pipeline" (click)="addPipeline()"></p-button>
+
+    <ul class="collections">
+        <li *ngFor="let process of processes">
+            <a (click)="openPipeline(process)">
+                <a [routerLink]="'/processes/' + process.id "><span *ngIf="process.name; else noName">{{ process.name }}</span><ng-template #noName>{{ process.id }}</ng-template></a>
+            </a>
+        </li>
+    </ul>
+    <div *ngIf="!processes || processes.length == 0 ">No Pipelines Yet - You can create your own pipelines.</div>
+
+    <h2>Plugins</h2>
+    <p-button label="Add Plugin" (click)="addPlugin()"></p-button>
+
+    <ul class="collections">
+        <li *ngFor="let plugin of plugins">
+            <a [routerLink]="'/plugins/' + plugin.id">{{ plugin.name }}</a>
+        </li>
+    </ul>
+    <div *ngIf="!plugins || plugins.length == 0">No Plugins Yet - You can add plugins from the web or create your own plugins.</div>
+
+</div>

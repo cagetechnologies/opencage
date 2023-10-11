@@ -1,0 +1,34 @@
+<!--p-dialog header="Add Plugin" [(visible)]="addingPlugin">
+    <h5>Add Node</h5>
+    <div class="p-fluid">
+        <select [(ngModel)]="selectedPlugin">
+            <option *ngFor="let plugin of plugins" [ngValue]="plugin">{{ plugin.name }}</option>
+        </select>
+        <p-button label="Add Plugin" (click)="addSelectedPlugin()"></p-button>
+    </div>
+</p-dialog>
+<p-dialog header="Save Process" [(visible)]="savingProcessAs">
+    <h5>Save Process</h5>
+    <div class="p-fluid">
+        <input type="text" [(ngModel)]="processName">
+        <p-button label="Save" (click)="saveProcessAs()"></p-button>
+    </div>
+</p-dialog-->
+<div class="content">
+    <p-card class="card">
+        <div style="display: flex; align-items: center">
+            <div>Use Settings to create a knowledge pipeline</div>
+            <p-button label="Add Pipeline" (click)="addProcess()" style="margin-left: auto"></p-button>
+        </div>
+    </p-card>
+    <h2>My Knowledge</h2>
+    <ul>
+        <li *ngFor="let knowledgeSet of knowledgeSets">
+            <a [routerLink]="'/knowledge/' + knowledgeSet.id">{{ knowledgeSet.name }}</a>
+            <button *ngIf="knowledgeSet.public">Make Private</button>
+            <button *ngIf="!knowledgeSet.public">Make Public</button>
+        </li>
+    </ul>
+    <h2>Others' Knowledge</h2>
+    <div>None Yet - Knowledge published by your member groups or contacts will appear here</div>
+</div>

@@ -1,0 +1,10 @@
+{
+    "id" : "plugin2",
+    "name":"Word Frequency",
+    "files":[
+        { 
+            "name":"test",
+            "src":"test.js"
+        }
+    ]
+}

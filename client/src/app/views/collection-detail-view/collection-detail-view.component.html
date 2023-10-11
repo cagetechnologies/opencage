@@ -1,0 +1,44 @@
+<p-dialog header="Add Set" [(visible)]="addingSet">
+    <h5>Web Page/Web Site</h5>
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="url">URL</label>
+            <input id="url" type="text" pInputText [(ngModel)]="url">
+        </div>
+    </div>
+    <p-button label="Add" (click)="addWebPage()"></p-button>
+    <h5>Document(s)</h5>
+    <p-fileUpload name="files[]" customUpload="true" (uploadHandler)="addFiles($event)"></p-fileUpload>
+    <!--div>
+        <h5>Folder</h5>
+        <p-button label="Select Folder" (click)="openFolder()"></p-button>
+    </div-->
+</p-dialog>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<div *ngIf="collection" class="content">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+    <div style="display: flex; align-items: center; width: 100%">
+        <h1>{{ collection.name }}</h1>
+        <button pButton pRipple type="button" label="Delete Collection" class="p-button-danger" (click)="deleteCollection()" style="margin-left: auto"></button>
+    </div>
+    <p-tabView>
+        <p-tabPanel header="Sets">
+            <button pButton pRipple type="button" label="Add Set" (click)="addSet()"></button>
+            <ul class="items">
+                <li *ngFor="let set of collection.sets">
+                    <app-set [set]="set" [collection]="collection"></app-set>
+                </li>
+            </ul>
+         </p-tabPanel>
+        <p-tabPanel header="Visualizations">
+            <button pButton pRipple type="button" label="Select Visualization" (onClick)="selectVisualization = !selectVisualization" style="margin-left: auto"></button>
+         </p-tabPanel>
+        <p-tabPanel header="Derived Assets">
+            <div style="margin-bottom: 10px">No Derived Assets</div>
+            <button pButton pRipple type="button" label="Open Analysis" (click)="deleteCollection()" style="margin-left: auto"></button>
+        </p-tabPanel>
+        <p-tabPanel header="Related Assets">
+            <div>No Related Assets</div>
+        </p-tabPanel>
+    </p-tabView>
+</div>

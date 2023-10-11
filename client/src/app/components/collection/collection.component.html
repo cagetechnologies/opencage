@@ -1,0 +1,12 @@
+<div class="collection">
+    <a [routerLink]="'/collections/' + collection.id">{{ collection.name }}</a>
+    <!--a style="margin-left: auto" (click)="deleteCollection1(collection._id)"
+        tooltip="Delete Collection">
+        <fa-icon [icon]="faTrash"></fa-icon>
+    </a-->
+</div>
+<ul class="sets">
+    <li *ngFor="let set of collection.sets">
+        <app-set [collection]="collection" [set]="set" [showDelete]="false"></app-set>
+    </li>
+</ul>

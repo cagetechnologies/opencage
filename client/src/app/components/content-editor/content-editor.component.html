@@ -1,0 +1,14 @@
+<md-editor name="Content" 
+  [upload]="doUpload" 
+  [preRender]="preRenderFunc" 
+  [postRender]="postRenderFunc"
+  [(ngModel)]="content" 
+  [height]="'600px'" 
+  [mode]="mode" 
+  [options]="options" 
+  (onEditorLoaded)="onEditorLoaded($event)"
+  (onPreviewDomChanged)="onPreviewDomChanged($event)"
+  required 
+  maxlength="500">
+  <slot custom-btns></slot>
+</md-editor>

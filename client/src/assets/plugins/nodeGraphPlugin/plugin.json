@@ -1,0 +1,10 @@
+{
+    "id" : "nodeGraph",
+    "name":"Node Graph Visualization",
+    "files":[
+        { 
+            "name":"app",
+            "src":"app.js"
+        }
+    ]
+}

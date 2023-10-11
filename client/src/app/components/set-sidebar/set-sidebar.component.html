@@ -1,0 +1,7 @@
+<a [routerLink]="'/collections/' + collection.id + '/sets/' + set.id" class="p-mr-2" (click)="closeSidebarS()">{{ set.name }}</a>
+<a *ngIf="set.items && set.items.length == 1 && set.items[0].path" class="webPageExternalLink ml-1" [href]="set.items[0].path" target="_blank" (click)="closeSidebarS()"><fa-icon [icon]="faExternalLinkAlt"></fa-icon></a>
+<ul *ngIf="set.items && set.items.length > 1">
+    <li *ngFor="let item of set.items">
+        <app-item-sidebar [collection]="collection" [set]="set" [item]="item" (closeSidebar)="closeSidebarS()"></app-item-sidebar>
+    </li>
+</ul>

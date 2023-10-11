@@ -1,0 +1,10 @@
+{
+    "id" : "odf",
+    "name":"ODF Export Plugin",
+    "files":[
+        { 
+            "name":"app",
+            "src":"app.js"
+        }
+    ]
+}

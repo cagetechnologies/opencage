@@ -1,0 +1,36 @@
+<p-dialog header="Add Collection" [(visible)]="addingCollection">
+    <h5>Web Page/Web Site</h5>
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="url">URL</label>
+            <input id="url" type="text" pInputText [(ngModel)]="url">
+        </div>
+    </div>
+    <p-button label="Retrieve Web Page" (click)="getWebPage()"></p-button>
+    <h5>Document(s)</h5>
+    <p-fileUpload name="files[]" url="/api/collections-upload"></p-fileUpload>
+    <!--div>
+        <h5>Folder</h5>
+        <p-button label="Select Folder" (click)="openFolder()"></p-button>
+    </div-->
+</p-dialog>
+<as-split unit="percent" direction="horizontal" #split="asSplit">
+    <as-split-area size="30" #area1="asSplitArea" style="background-color: black">
+        <ul class="bar">
+            <li><a (click)="addCollection()" tooltip="Add Collection">
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                </a>
+            </li>
+        </ul>
+        <ul class="collections">
+            <li *ngFor="let collection of collections">
+                <app-collection [collection]="collection" (deleteCollection)="deleteCollection($event)"></app-collection>
+            </li>
+        </ul>
+        
+    </as-split-area>
+    <as-split-area size="70" #area2="asSplitArea">
+        <app-visualizations></app-visualizations>
+    </as-split-area>
+</as-split>
+

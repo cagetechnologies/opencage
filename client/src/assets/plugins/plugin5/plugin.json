@@ -1,0 +1,10 @@
+{
+    "id" : "plugin5",
+    "name":"Notes Export",
+    "files":[
+        { 
+            "name":"test",
+            "src":"test.js"
+        }
+    ]
+}

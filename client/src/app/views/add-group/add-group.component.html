@@ -1,0 +1,13 @@
+<div class="content">
+    <h2>Search Groups</h2>
+    <div>
+        <input type="text" [(ngModel)]="search">
+        <button (click)="searchGroups()">Search</button>
+    </div>
+    <div *ngIf="groups" class="p-mt-2">
+        <div *ngFor="let group of groups">
+            {{ group. title }} {{ group.name }}
+            <button (click)="addGroup(group)">Join</button>
+        </div>
+    </div>
+</div>

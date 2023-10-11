@@ -1,0 +1,41 @@
+<p-dialog header="Add Plugin" [modal]="true" [(visible)]="addingPlugin" [closable]="true" style="color: black">
+    <!--h3>Plugins</h3>
+    <div class="p-fluid">
+        <select>
+            <option *ngFor="let plugin of availablePlugins">{{ plugin.name }}</option>
+        </select>
+        <p-button label="Add Plugin" (click)="getWebPage()"></p-button>
+    </div-->
+    <p>
+        Add a CAGE Plugin from a URL such as a GIT repository.  A CAGE plugin contains a plugin.json file.
+    </p>
+    <h5>URL</h5>
+    <p class="mt-2">
+        <input type="text" pInputText style="width: 100%" [(ngModel)]="pluginSrc" placeholder="https://github.com/cagetechnologies/cage-sample-plugin"/>
+    </p>
+    <p-button label="Add Plugin" (click)="openPlugin()"></p-button>
+    <h5>ZIP File</h5>
+    <p-fileUpload name="files[]" url="/api/collections-upload"></p-fileUpload>
+    <!--div>
+        <h5>Folder</h5>
+        <p-button label="Select Folder" (click)="openFolder()"></p-button>
+    </div-->
+</p-dialog>
+<div class="content">
+    <div>
+        <p-button label="Add Plugin" (click)="addPlugin()"></p-button>
+    </div>
+    <div style="margin-top: 15px">
+        <input type="text" pInputText placeholder="Search plugins in marketplace" [(ngModel)]="searchPlugin" (keyup)="updateFilter()"/>
+    </div>
+    <!--input type="text" style="width: 96%; margin: 5px;" placeholder="Search plugins in marketplace" [(ngModel)]="searchPlugin" (keyup)="updateFilter()"-->
+    <ul class="plugins">
+        <li *ngFor="let plugin of plugins | pluginsfilter:filterargs" class="plugin">
+            <a (click)="displayPlugin(plugin)">{{ plugin.name }}</a>
+            <span *ngFor="let tag of plugin.tags"><p-tag [value]="tag"></p-tag></span>
+                <p-button *ngIf="userPluginsMap[plugin.id]" label="Installed"></p-button>
+                <p-button *ngIf="!userPluginsMap[plugin.id]" label="Install"></p-button>
+        </li>
+    </ul>
+</div>
+

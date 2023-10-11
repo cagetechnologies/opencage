@@ -1,0 +1,48 @@
+<p-dialog header="Add Plugin" [modal]="true" [(visible)]="addingPlugin" [closable]="true" style="color: black">
+    <!--h3>Plugins</h3>
+    <div class="p-fluid">
+        <select>
+            <option *ngFor="let plugin of availablePlugins">{{ plugin.name }}</option>
+        </select>
+        <p-button label="Add Plugin" (click)="getWebPage()"></p-button>
+    </div-->
+    <p>
+        Add a CAGE Plugin from a URL such as a GIT repository.  A CAGE plugin contains a plugin.json file.
+    </p>
+    <h5>URL</h5>
+    <p class="mt-2">
+        <input type="text" pInputText style="width: 100%" [(ngModel)]="pluginSrc" placeholder="https://github.com/cagetechnologies/cage-sample-plugin"/>
+    </p>
+    <p-button label="Add Plugin" (click)="openPlugin()"></p-button>
+    <h5>ZIP File</h5>
+    <p-fileUpload name="files[]" url="/api/collections-upload"></p-fileUpload>
+    <!--div>
+        <h5>Folder</h5>
+        <p-button label="Select Folder" (click)="openFolder()"></p-button>
+    </div-->
+</p-dialog>
+<as-split unit="percent" direction="horizontal" #split="asSplit">
+    <as-split-area size="30" #area1="asSplitArea" style="background-color: black">
+        <ul class="bar">
+            <li>
+                <a (click)="addPlugin()" tooltip="Add Plugin">
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                </a>
+            </li>
+        </ul>
+        <input type="text" style="width: 96%; margin: 5px;" placeholder="Search plugins in marketplace" [(ngModel)]="searchPlugin" (keyup)="updateFilter()">
+        <ul class="plugins">
+            <li *ngFor="let plugin of plugins | pluginsfilter:filterargs" class="plugin">
+                <div><a (click)="displayPlugin(plugin)">{{ plugin.name }}</a></div>
+                <div *ngIf="userPluginsMap[plugin.id]" class="plugin-icon">INSTALLED</div>
+                <div *ngIf="!userPluginsMap[plugin.id]" class="plugin-icon" (click)="installPlugin(plugin)">INSTALL</div>
+            </li>
+        </ul>
+    </as-split-area>
+    <as-split-area size="70" #area2="asSplitArea">
+        <div *ngIf="plugin" class="page">
+            <h3>{{ plugin.name }}</h3>
+            {{ plugin.description }}
+        </div>
+    </as-split-area>
+</as-split>

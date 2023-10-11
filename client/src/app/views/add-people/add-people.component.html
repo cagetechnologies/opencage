@@ -1,0 +1,13 @@
+<div class="content">
+    <h2>Search People</h2>
+    <div>
+        <input type="text" [(ngModel)]="search" placeholder="Enter email, id, or name">
+        <button (click)="searchPeople()">Search</button>
+    </div>
+    <div *ngIf="people" class="p-mt-2">
+        <div *ngFor="let person of people">
+            {{ person.name }}
+            <button (click)="addContact(person)">Add</button>
+        </div>
+    </div>
+</div>

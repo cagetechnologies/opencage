@@ -1,0 +1,54 @@
+.collection li {
+    padding: 10px;
+    color: white;
+}
+
+.collections {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    li {
+        padding: 5px;
+    }
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+
+.bar {
+    margin: 0;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkslategray;
+    list-style-type: none;
+    color: white;
+    height: 20px;
+    background-color: gray;
+}
+
+:host {
+    height: 100vh;
+    max-height: 100vh;
+}
+
+#nodes {
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    flex-grow: 0 0;
+    overflow-y: scroll;
+}
+
+.content {
+    margin: 15px;
+}

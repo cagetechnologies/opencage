@@ -1,0 +1,10 @@
+{
+    "id" : "plugin3",
+    "name":"Notes Visualization",
+    "files":[
+        { 
+            "name":"test",
+            "src":"test.js"
+        }
+    ]
+}

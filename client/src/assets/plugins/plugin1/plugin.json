@@ -1,0 +1,10 @@
+{
+    "id" : "plugin1",
+    "name":"Source",
+    "files":[
+        { 
+            "name":"test",
+            "src":"test.js"
+        }
+    ]
+}

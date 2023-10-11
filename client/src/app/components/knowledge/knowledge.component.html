@@ -1,0 +1,22 @@
+<div class="content">
+
+    <p-card class="card">
+        <div style="display: flex; align-items: center">
+            <div>Use Settings to create a knowledge pipeline</div>
+            <p-button label="Open Settings" (click)="gotoSettings()" style="margin-left: auto"></p-button>
+        </div>
+    </p-card>
+    <h2>My Knowledge</h2>
+    <ul *ngIf="knowledgeSets && knowledgeSets.length > 0">
+        <li *ngFor="let knowledgeSet of knowledgeSets">
+            <a [routerLink]="'/knowledge/' + knowledgeSet.id">{{ knowledgeSet.name }}</a>
+            <button *ngIf="knowledgeSet.public">Make Private</button>
+            <button *ngIf="!knowledgeSet.public">Make Public</button>
+        </li>
+    </ul>
+    <div *ngIf="!knowledgeSets || knowledgeSets.length == 0">
+        None Yet - Process some documents in your collections to create knowledge assets.
+    </div>
+    <h2>Others' Knowledge</h2>
+    <div>None Yet - Knowledge published by your groups or contacts will appear here.</div>
+</div>

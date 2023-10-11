@@ -1,0 +1,20 @@
+<p-dialog header="Add Plugin" [(visible)]="addingPlugin">
+    <h5>Add Node</h5>
+    <div class="p-fluid">
+        <select [(ngModel)]="selectedPlugin">
+            <option *ngFor="let plugin of plugins" [ngValue]="plugin">{{ plugin.name }}</option>
+        </select>
+        <p-button label="Add Node" (click)="addSelectedNode()"></p-button>
+    </div>
+</p-dialog>
+<div class="content">
+    <h1>{{ process.name }}</h1>
+    <div style="display: flex; width: 100%">
+        <p-button label="Add Node" (click)="addNode()"></p-button>
+        <p-button label="Save" (click)="save()" style="margin-left: 5px"></p-button>
+        <p-button label="Delete" (click)="delete()" style="margin-left: auto" styleClass="p-button-danger"></p-button>
+    </div>
+    <div class="wrapper">
+        <canvas id="nodes"></canvas>
+    </div>
+</div>
